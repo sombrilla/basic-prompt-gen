@@ -17,8 +17,8 @@ const copies = {
     codeNotFound:
       "Can't find card with provided code, please lift the card and try again or try with a different card.",
     codesInvalid:
-      "Looks like the codes provided are invalid, remember each card needs to have a unique country."
-  }
+      "Looks like the codes provided are invalid, remember each card needs to have a unique country.",
+  },
 };
 
 export default function App() {

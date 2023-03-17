@@ -21,7 +21,7 @@ export function AvailableCards({ allCards }: AvailableCardsProps) {
     <section>
       <h3 id="available-cards">Available Cards</h3>
       {Object.entries(cardIdsByCountry).map(([country, value]) => (
-        <p>
+        <p key={country}>
           <b>{country}:</b> {value.join(", ")}
         </p>
       ))}
