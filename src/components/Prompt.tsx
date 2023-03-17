@@ -15,7 +15,7 @@ const copies = {
 
 const promptConfig = {
   style: "a van gogh painting of ",
-  setting: ", pictured from street, without flags, orange prominent",
+  setting: ", without flags, orange prominent",
 };
 
 export function Prompt({ slots, openAiKey }: PromptProps) {
@@ -70,6 +70,7 @@ export function Prompt({ slots, openAiKey }: PromptProps) {
           "Generating..."
         ) : (
           <>
+            <button onClick={() => generateImage(newPrompt)}>Retry</button>
             {generatedImage ? (
               <>
                 <h3>Image:</h3>
