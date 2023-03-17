@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 
 import { Instructions } from "./components/Instructions";
 import { AvailableCards } from "./components/AvailableCards";
@@ -22,7 +22,10 @@ const copies = {
 };
 
 export default function App() {
+  const [openAiKey, setOpenAiKey] = useState<string | null>(null);
   const [slots, setSlots] = useState<[Slot, Slot]>([null, null]);
+
+  const urlParams = new URLSearchParams(window.location.search);
 
   function updateSlots(slot: number, value: string | null) {
     const card = cards.find((card) => card.id === value) || undefined;
@@ -35,15 +38,41 @@ export default function App() {
     });
   }
 
+  function handleApiKeySubmit(event: FormEvent) {
+    event.preventDefault();
+
+    const formData = new FormData(event.target as HTMLFormElement);
+    const inputValue = formData.get("apiKey") as string | null;
+
+    setOpenAiKey(inputValue);
+  }
+
   return (
     <div className="App">
-      <Instructions />
-      <hr />
-      <AvailableCards allCards={cards} />
-      <hr />
-      <Slots onSlotUpdate={updateSlots} slots={slots} />
-      <hr />
-      <Prompt slots={slots} />
+      {openAiKey ? (
+        <>
+          <Instructions />
+          <hr />
+          <AvailableCards allCards={cards} />
+          <hr />
+          <Slots onSlotUpdate={updateSlots} slots={slots} />
+          <hr />
+          <Prompt slots={slots} openAiKey={openAiKey} />
+        </>
+      ) : (
+        <form
+          onSubmit={handleApiKeySubmit}
+          style={{ display: "flex", flexDirection: "column" }}
+        >
+          <h3>Submit your OpenAI API key:</h3>
+          <input
+            defaultValue={urlParams.get("apiKey") || undefined}
+            name="apiKey"
+            style={{ marginBottom: "10px" }}
+          />
+          <button type="submit">Submit</button>
+        </form>
+      )}
     </div>
   );
 }
