@@ -1,0 +1,129 @@
+.App {
+  font-family: sans-serif;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+p, h1, h2, h3, h4, ol {
+  margin: 0;
+}
+
+ol {
+  padding-left: 0;
+  list-style-position: inside;
+}
+
+b {
+  display: inline-block;
+
+  &::first-letter {
+    text-transform: uppercase;
+  }
+}
+
+h3, ol {
+  margin-bottom: 10px;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background: black;
+  color: white;
+  border-radius: 3px;
+  border: none;
+
+  &:disabled {
+    background: #9c9c9c
+  }
+
+  &:not(:disabled):hover {
+    background: #353535;
+    cursor: pointer;
+  }
+}
+
+.slots {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slot {
+  width: 45%;
+
+  .error {
+    color: red;
+    font-size: 12px;
+  }
+
+  input {
+    font-size: 16px;
+    padding: 5px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .buttonsWrapper {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  text-align: center;
+  
+  &.argentina {
+    background: #a9d9e7;
+  }
+
+  &.netherlands {
+    background: #FD5D3C;
+  }
+
+  .title {
+    font-weight: bold;
+    margin: 5px 0;
+  }
+
+  .country {
+    font-size: 12px;
+    color: #585858;
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  img {
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+.generatePrompt {
+  
+  .error {
+    max-width: 70%;
+    margin: 15px auto;
+    text-align: center;
+    color: red;
+  }
+
+  .promptResponse {
+    font-family: Consolas, monospace;
+    border: 1px solid darkgray;
+    background: #e5e5e5;
+    margin: 15px 0;
+    padding: 10px 8px;
+    border-radius: 3px;
+  }
+}
