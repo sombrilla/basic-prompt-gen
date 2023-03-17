@@ -1,5 +1,5 @@
 import { FormEvent } from "react";
-import { CardData } from "../App";
+import { CardData } from "../types/base";
 
 interface SlotInputProps {
   slotNumber: number;
@@ -14,7 +14,7 @@ export function SlotInput({
   card,
   onReadSlot,
   onLiftCard,
-  error
+  error,
 }: SlotInputProps) {
   const inUse = Boolean(card) || Boolean(error);
 
